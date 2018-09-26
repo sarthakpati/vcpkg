@@ -3,8 +3,8 @@ include(vcpkg_common_functions)
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO copperspice/copperspice
-    REF 1.5.1
-    SHA512 5863d0c05f046075b998bced7c8c71bf8e969dd366f26d48cdf26012ea744ae4a22784a5c3c12e12b0f188e997c93a6890ef0c3c336865ea93f13c45f70b258d
+    REF cs-1.5.1
+    SHA512 079599f13fad0e0f04718663f55e0aec36a7b4c78957c9c8ff9eb60752277e2c05678d785dd1ca6b80d6fb85af0735ef3ce0a71a662c43216134440efb64ed94
     HEAD_REF master
 )
 
