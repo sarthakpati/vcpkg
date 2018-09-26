@@ -1,4 +1,4 @@
 Source: copperspice
 Version: 1.5.1
 Description: CopperSpice is of a set of individual libraries used to develop cross platform software applications in C++. You can use CopperSpice with many existing tool chains from the command line, from QtCreator, VI, emacs or your preferred development environment using CMake or Autotools. 
-Build-Depends: openssl, zlib
+Build-Depends: openssl
