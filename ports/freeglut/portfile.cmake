@@ -1,7 +1,7 @@
 include(vcpkg_common_functions)
 set(SOURCE_PATH ${CURRENT_BUILDTREES_DIR}/src/freeglut-3.0.0)
 vcpkg_download_distfile(ARCHIVE
-    URLS "http://downloads.sourceforge.net/project/freeglut/freeglut/3.0.0/freeglut-3.0.0.tar.gz"
+    URLS "https://sourceforge.net/projects/freeglut/files/freeglut/3.0.0/freeglut-3.0.0.tar.gz/download"
     FILENAME "freeglut-3.0.0.tar.gz"
     SHA512 9c45d5b203b26a7ff92331b3e080a48e806c92fbbe7c65d9262dd18c39cd6efdad8a795a80f499a2d23df84b4909dbd7c1bab20d7dd3555d3d88782ce9dd15b0
 )
@@ -25,6 +25,12 @@ else()
     set(FREEGLUT_DYNAMIC OFF)
 endif()
 
+# Patch header
+file(READ ${SOURCE_PATH}/include/GL/freeglut_std.h FREEGLUT_STDH)
+string(REGEX REPLACE "\"freeglut[_a-z]+.lib\""
+                     "\"freeglut.lib\"" FREEGLUT_STDH "${FREEGLUT_STDH}")
+file(WRITE ${SOURCE_PATH}/include/GL/freeglut_std.h "${FREEGLUT_STDH}")
+
 vcpkg_configure_cmake(
     SOURCE_PATH ${SOURCE_PATH}
     OPTIONS
@@ -35,14 +41,6 @@ vcpkg_configure_cmake(
 )
 
 vcpkg_install_cmake()
-
-# Patch header
-file(READ ${CURRENT_PACKAGES_DIR}/include/GL/freeglut_std.h FREEGLUT_STDH)
-string(REPLACE "pragma comment (lib, \"freeglut_staticd.lib\")"
-               "pragma comment (lib, \"freeglut.lib\")" FREEGLUT_STDH "${FREEGLUT_STDH}")
-string(REPLACE "pragma comment (lib, \"freeglutd.lib\")"
-               "pragma comment (lib, \"freeglut.lib\")" FREEGLUT_STDH "${FREEGLUT_STDH}")
-file(WRITE ${CURRENT_PACKAGES_DIR}/include/GL/freeglut_std.h "${FREEGLUT_STDH}")
 
 # Rename static lib (otherwise it's incompatible with FindGLUT.cmake)
 if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")

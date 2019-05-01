@@ -8,8 +8,8 @@ set(SOURCE_PATH ${CURRENT_BUILDTREES_DIR}/src/eastl)
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO electronicarts/EASTL
-    REF 3.09.00
-    SHA512 73b1b6ce0eba65fca049571a44595ff581f0dda01dcaaf3e0deb2d22e62b9b694a321339038c5cc2e6802ba3270675b814b73b59a8cfc8d71e645c60b17bebb6
+    REF 3.13.04
+    SHA512 4baa3dcf9fceac44f0c515db8bf50b7040afd5091162199c78bf9a1ab13ae19b4e55bb0bafe56da83a7b375ca0c15ba9c19d003de321ec6e40b489b2fe2561d5
     HEAD_REF master
 )
 
